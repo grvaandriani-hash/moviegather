@@ -6,11 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-    {
+    { //buat ngeban
         Schema::table('users', function (Blueprint $table) {
             $table->enum('status', ['active', 'banned'])
                   ->default('active')
@@ -18,9 +15,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {

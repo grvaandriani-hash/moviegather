@@ -17,18 +17,12 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
 
-    /**
-     * Cek status user setelah login
-     */
     protected function authenticated($request, $user)
     {
         if ($user->status == 'banned') {

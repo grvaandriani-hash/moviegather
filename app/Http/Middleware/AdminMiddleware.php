@@ -9,15 +9,17 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
-    /**
-     * Handle an incoming request.
-     */
     public function handle(Request $request, Closure $next): Response
     {
+        // ngecek user udh login
+        // rolenya sebagai admin
         if (Auth::check() && Auth::user()->role == 'admin') {
+
+            // klo benar, lanjutkan ke halaman yang dituju
             return $next($request);
         }
 
+        // Jika bukan admin, tampilkan error 403 (Forbidden)
         abort(403, 'Akses ditolak.');
     }
 }

@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = [
+    protected $fillable = [ //klm mn yg blh diisi
         'name',
         'email',
         'role',
@@ -19,12 +19,12 @@ class User extends Authenticatable
         'status',
     ];
 
-    protected $hidden = [
+    protected $hidden = [ //biar ga keliatan
         'password',
         'remember_token',
     ];
 
-    protected function casts(): array
+    protected function casts(): array //ngubh tipe data
     {
         return [
             'email_verified_at' => 'datetime',
@@ -32,17 +32,13 @@ class User extends Authenticatable
         ];
     }
 
-    /**
-     * Event yang dibuat oleh user
-     */
+
     public function createdEvents()
     {
-        return $this->hasMany(Event::class, 'user_id');
+        return $this->hasMany(Event::class, 'user_id'); //1user bisa bikin bnyk event
     }
 
-    /**
-     * Event yang diikuti user
-     */
+    
     public function joinedEvents()
     {
         return $this->belongsToMany(Event::class, 'participants')

@@ -9,6 +9,7 @@ class Participant extends Model
 {
     use HasFactory;
 
+    // Kolom yang bisa diisi saat menambah data peserta
     protected $fillable = [
         'user_id',
         'event_id',

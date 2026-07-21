@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    // Menampilkan semua event
+    // Menampilkan semua data event
     public function index(Request $request)
     {
         $search = $request->search;
@@ -24,13 +24,13 @@ class EventController extends Controller
         return view('events.index', compact('events'));
     }
 
-    // Form tambah event
+    // buat tambahin event
     public function create()
     {
         return view('events.create');
     }
 
-    // Simpan event
+    // simpen event
     public function store(Request $request)
     {
         $request->validate([
@@ -79,7 +79,7 @@ class EventController extends Controller
         return view('events.show', compact('event'));
     }
 
-    // Form Edit
+    // buat Edit
     public function edit(Event $event)
     {
         return view('events.edit', compact('event'));

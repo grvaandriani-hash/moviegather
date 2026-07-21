@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Admin
+        // Admin pertama
         User::create([
             'name' => 'MovieGather Admin',
             'email' => 'admin@moviegather.com',
@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        // User Demo
+        // User 
         User::create([
             'name' => 'Movie Lover',
             'email' => 'user@moviegather.com',

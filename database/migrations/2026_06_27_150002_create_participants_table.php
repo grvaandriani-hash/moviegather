@@ -6,18 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
 {
     Schema::create('participants', function (Blueprint $table) {
         $table->id();
 
        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-
+//nyimpen id user yg gbng ke event
 $table->foreignId('event_id')->constrained()->cascadeOnDelete();
-
+//biar ga ada user yg sm gnbng lbh dri1
 $table->unique(['user_id', 'event_id']);
 
 $table->enum('attendance_status', [
@@ -29,10 +26,6 @@ $table->enum('attendance_status', [
 $table->timestamps();
     });
 }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('participants');

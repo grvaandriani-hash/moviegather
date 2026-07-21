@@ -12,7 +12,7 @@ return new class extends Migration
 
             $table->id();
 
-            // Host Event
+            //yg buat event
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
 
             // Data Film
@@ -35,6 +35,7 @@ return new class extends Migration
 
     public function down(): void
     {
+        //hps event
         Schema::dropIfExists('events');
     }
 };

@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AdminController;
-
+//halaman pertama
 Route::get('/', function () {
-
+//abis login langsung ke dashboard
     if (Auth::check()) {
         return redirect()->route('dashboard');
     }
@@ -16,18 +16,17 @@ Route::get('/', function () {
 
 });
 
-// Authentication
 Auth::routes();
 
-// Redirect setelah login
+//  abis login
 Route::get('/home', function () {
     return redirect()->route('dashboard');
 });
 
-// Route yang harus login
+// Route yang wjb login
 Route::middleware('auth')->group(function () {
 
-    // Dashboard
+    // Dashboard user
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
 
@@ -39,7 +38,7 @@ Route::middleware('auth')->group(function () {
         ->name('events.join');
 });
 
-// Admin
+// route khusus Admin
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin', [AdminController::class, 'index'])

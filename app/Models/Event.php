@@ -9,6 +9,7 @@ class Event extends Model
 {
     use HasFactory;
 
+    //  tabel yang boleh diisi pas anambahin sama edit
     protected $fillable = [
         'user_id',
         'poster',
@@ -23,21 +24,22 @@ class Event extends Model
         'description',
     ];
 
-    /**
-     * User yang membuat event
-     */
+    // Relasi Event sama User
+    // Satu Event dimiliki oleh satu User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Peserta yang mengikuti event
-     */
+    // event pnya bnk peserta
     public function participants()
     {
         return $this->belongsToMany(User::class, 'participants')
+
+                  
                     ->withPivot('attendance_status')
+
+                  
                     ->withTimestamps();
     }
 }
